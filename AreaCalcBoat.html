@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+  <form
+  oninput="depthSelection.value=parseInt(Depth.value)">
+
+    Speed of Boat: <input type="number" name="Speed" value=".5" step=".1" min=".01" max="5"> Meters per second<br><br>
+    Depth of water: <input type="range" name="Depth" value="1" min=".2" max="200"> <output name="depthSelection">1</output> Meters<br><br>
+    Angular Resolution: <input type ="number" name="AngularRes" value="1">  Radians <br><br>
+    Runtime: <input type="text" name="Runtime"> <br><br>
+    Seperation of survey paths: <input type="number" name="pathSeperation" value="1" step=".1"> Meters<br>
+    <br><br>OUTPUTS:<br>
+    Expansion Ratio: <output name ="ExpansionRatio"></output>X<br><br>
+    Interpolated Width Path: <output name ="interpolatedWidthPath"></output> <br><br>
+    Rate of Survey: <output name ="rateOfSurvey"></output> Meters per second<br><br>
+    Actual Area Surveyed: <output name ="actualAreaSurveyed"></output><br><br>
+    <button type="button" name="calcButton">Calculate</button>
+  </form>
+
+  <script>
+
+    function calcIterpolatedWidthPath(){
+      var depth = document.getElementsByName("Depth").value;
+      var angularResolution = document.getElementsByName("AngularRes").value;
+      var expansionRatio = document.getElementsByName("ExpansionRatio").value;
+
+      var calculatedIWP = document.getElementsByName("interpolatedWidthPath");
+      
+    }
+
+    function calcExpansionDisplay(){
+        var seperation = document.getElementsByName("pathSeperation").vale;
+        var iwp = document.getElementsByName("interpolatedWidthPath").value;
+        var calculatedValue = document.getElementsByName("ExpansionRatio");
+        calculatedValue = seperation / iwp;
+    }
+
+    document.getElementsByName("calcButton").addEventListener("click", calcExpansionDisplay(), calcIterpolatedWidthPath());
+  </script>
+
+</body>
+</html>
